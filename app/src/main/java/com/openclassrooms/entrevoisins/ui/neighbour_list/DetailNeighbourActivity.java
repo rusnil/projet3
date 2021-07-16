@@ -1,6 +1,7 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
@@ -33,6 +34,8 @@ public class DetailNeighbourActivity extends AppCompatActivity {
     TextView mAboutMe;
     @BindView(R.id.back)
     ImageView mBack;
+    @BindView(R.id.fab_favorite)
+    FloatingActionButton mFavoriteFab;
 
     private NeighbourApiService mApiService;
 
@@ -52,9 +55,10 @@ public class DetailNeighbourActivity extends AppCompatActivity {
         mNameAvatar.setText(neighbour.getName());
         mAdresse.setText(neighbour.getAddress());
         mFacebook.setText("www.facebook.fr/"+neighbour.getName());
-
+        setFavoristate(neighbour);
         Glide.with(this)
                 .load(neighbour.getAvatarUrl())
+                .centerCrop()
                 .into(mAvatar);
 
         mBack.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +67,29 @@ public class DetailNeighbourActivity extends AppCompatActivity {
                 DetailNeighbourActivity.this.finish();
             }
         });
-    }
 
+        mFavoriteFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!neighbour.isFavorite()) {
+                    mApiService.addFavorite(neighbour);
+                    mFavoriteFab.setImageResource(R.drawable.ic_star_white_24dp);
+                }
+                else {
+                    mApiService.removeFavorite(neighbour);
+                    mFavoriteFab.setImageResource(R.drawable.ic_star_border_white_24dp);
+                }
+            }
+        });
+
+    }
+    private void setFavoristate(Neighbour neighbour){
+        if (neighbour.isFavorite()){
+            mFavoriteFab.setImageResource(R.drawable.ic_star_white_24dp);
+        }
+        else {
+            mFavoriteFab.setImageResource(R.drawable.ic_star_border_white_24dp);
+        }
+    }
 
 }

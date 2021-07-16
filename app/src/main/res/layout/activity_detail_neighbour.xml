@@ -16,13 +16,16 @@
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_arrow_back"/>
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_back" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_favorite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         app:backgroundTint="@color/blanc"
         android:clickable="true"
@@ -30,7 +33,7 @@
         android:tint="#FCC601"
         app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/avatar" />
+        app:layout_constraintTop_toBottomOf="@id/avatar"/>
 
     <TextView
         android:id="@+id/nameAvatar"
@@ -40,6 +43,7 @@
         android:layout_marginBottom="24dp"
         android:text="NameAvatar"
         android:textColor="@color/blanc"
+        android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="@id/avatar"
         app:layout_constraintStart_toStartOf="parent" />
 
