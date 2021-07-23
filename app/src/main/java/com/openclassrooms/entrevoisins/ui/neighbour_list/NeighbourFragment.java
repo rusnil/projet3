@@ -34,8 +34,11 @@ public class NeighbourFragment extends Fragment implements NeighbourEvent{
      * Create and return a new instance
      * @return @{@link NeighbourFragment}
      */
-    public static NeighbourFragment newInstance() {
+    public static NeighbourFragment newInstance(boolean favorite) {
         NeighbourFragment fragment = new NeighbourFragment();
+        Bundle bundle = new Bundle();
+        bundle.putBoolean("favoris", favorite);
+        fragment.setArguments(bundle);
         return fragment;
     }
 
@@ -53,6 +56,7 @@ public class NeighbourFragment extends Fragment implements NeighbourEvent{
         mRecyclerView = (RecyclerView) view;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+        initList();
         return view;
     }
 
@@ -60,7 +64,11 @@ public class NeighbourFragment extends Fragment implements NeighbourEvent{
      * Init the List of neighbours
      */
     private void initList() {
-        mNeighbours = mApiService.getNeighbours();
+        if (getArguments().getBoolean("favoris")){
+            mNeighbours = mApiService.getFavorite();
+        } else {
+            mNeighbours = mApiService.getNeighbours();
+        }
         mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours, this));
     }
 
