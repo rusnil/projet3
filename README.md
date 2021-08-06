@@ -1,7 +1,8 @@
 # Instructions pour Cloner et Exécuter le projet.
 
 
-### 1. Cliquez sur "Code" et copiez le lien : https://github.com/rusnil/projet3.git<p align="center"><img width="1000" alt="cloneGithub" src="https://user-images.githubusercontent.com/84316014/128018055-8d48e7a4-1eff-463b-9da7-a6bcd74a145f.png"></p>
+### 1. Cliquez sur "Code" et copiez le lien : https://github.com/rusnil/projet3.git<p align="center">![cloneGitHub](https://user-images.githubusercontent.com/84316014/128540861-03b086e6-938c-4d4e-95a2-b76a72ae6386.png)
+</p>
 
 ### 2. Sur Android Studio, cliquez sur "Get From Version Control".
 <p align="center">
